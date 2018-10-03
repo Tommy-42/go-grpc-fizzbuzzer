@@ -1,0 +1,131 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/v1/fizzbuzz/fizzbuzz.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/fizzbuzz": {
+      "get": {
+        "operationId": "GetFizzBuzz",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1GetFizzBuzzResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "first_word",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "second_word",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "first_multiple",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "second_multiple",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "FizzBuzzService"
+        ]
+      }
+    },
+    "/v1/fizzbuzz/{first_word}/{second_word}/{first_multiple}/{second_multiple}/{limit}": {
+      "get": {
+        "operationId": "GetFizzBuzz2",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1GetFizzBuzzResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "first_word",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "second_word",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "first_multiple",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "second_multiple",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "FizzBuzzService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "v1GetFizzBuzzResponse": {
+      "type": "object",
+      "properties": {
+        "fizzbuzzed": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

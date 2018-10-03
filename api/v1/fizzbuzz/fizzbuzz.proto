@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package fizzbuzz.v1;
+
+option go_package = "fizzbuzzV1";
+option csharp_namespace = "FizzBuzz.V1";
+
+import "google/api/annotations.proto";
+
+service FizzBuzzService {
+  rpc GetFizzBuzz(GetFizzBuzzRequest) returns (GetFizzBuzzResponse) {
+    option (google.api.http) = {
+      get : "/v1/fizzbuzz"
+      additional_bindings {
+        get : "/v1/fizzbuzz/{first_word}/{second_word}/{first_multiple}/"
+              "{second_multiple}/{limit}"
+      }
+    };
+  }
+}
+
+message GetFizzBuzzRequest {
+  string first_word = 1;
+  string second_word = 2;
+  int64 first_multiple = 3;
+  int64 second_multiple = 4;
+  int64 limit = 5;
+}
+
+message GetFizzBuzzResponse { string fizzbuzzed = 1; }
