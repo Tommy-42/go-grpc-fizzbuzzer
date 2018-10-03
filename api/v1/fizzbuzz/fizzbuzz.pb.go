@@ -177,6 +177,15 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type FizzBuzzServiceClient interface {
+	// GetFizzBuzz
+	// this endpoint is based on the famous FizzBuzz test
+	// if the parameters are ommited it will take default value as defined :
+	// * defaultFirstWord  = "fizz"
+	// * defaultSecondWord = "buzz"
+	// * defaultLimit = 100
+	//
+	// the default value for first_multiple & second_multiple will be 0,
+	// throwing an error as division by 0 is not well defined
 	GetFizzBuzz(ctx context.Context, in *GetFizzBuzzRequest, opts ...grpc.CallOption) (*GetFizzBuzzResponse, error)
 }
 
@@ -199,6 +208,15 @@ func (c *fizzBuzzServiceClient) GetFizzBuzz(ctx context.Context, in *GetFizzBuzz
 
 // FizzBuzzServiceServer is the server API for FizzBuzzService service.
 type FizzBuzzServiceServer interface {
+	// GetFizzBuzz
+	// this endpoint is based on the famous FizzBuzz test
+	// if the parameters are ommited it will take default value as defined :
+	// * defaultFirstWord  = "fizz"
+	// * defaultSecondWord = "buzz"
+	// * defaultLimit = 100
+	//
+	// the default value for first_multiple & second_multiple will be 0,
+	// throwing an error as division by 0 is not well defined
 	GetFizzBuzz(context.Context, *GetFizzBuzzRequest) (*GetFizzBuzzResponse, error)
 }
 

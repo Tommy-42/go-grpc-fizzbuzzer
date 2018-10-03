@@ -17,6 +17,8 @@
   "paths": {
     "/v1/fizzbuzz": {
       "get": {
+        "summary": "GetFizzBuzz\nthis endpoint is based on the famous FizzBuzz test\nif the parameters are ommited it will take default value as defined :\n* defaultFirstWord  = \"fizz\"\n* defaultSecondWord = \"buzz\"\n* defaultLimit = 100",
+        "description": "the default value for first_multiple \u0026 second_multiple will be 0,\nthrowing an error as division by 0 is not well defined",
         "operationId": "GetFizzBuzz",
         "responses": {
           "200": {
@@ -68,6 +70,8 @@
     },
     "/v1/fizzbuzz/{first_word}/{second_word}/{first_multiple}/{second_multiple}/{limit}": {
       "get": {
+        "summary": "GetFizzBuzz\nthis endpoint is based on the famous FizzBuzz test\nif the parameters are ommited it will take default value as defined :\n* defaultFirstWord  = \"fizz\"\n* defaultSecondWord = \"buzz\"\n* defaultLimit = 100",
+        "description": "the default value for first_multiple \u0026 second_multiple will be 0,\nthrowing an error as division by 0 is not well defined",
         "operationId": "GetFizzBuzz2",
         "responses": {
           "200": {

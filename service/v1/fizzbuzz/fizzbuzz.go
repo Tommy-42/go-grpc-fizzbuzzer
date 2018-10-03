@@ -16,19 +16,23 @@ const (
 	defaultLimit      = 100
 )
 
-type Service struct {
-	// might contains a DB or whatever the service needs
-}
+// Service
+// might contains a DB or whatever the service needs
+type Service struct{}
 
+// NewFizzBuzzService
+// should fill the Service struct with the params
 func NewFizzBuzzService() *Service {
 	return &Service{}
 }
 
+// GetFizzBuzz
 // Accepts five parameters : two strings and three integers and returns a JSON
 // It must return a list of strings with numbers from 1 to Limit, where:
 // all multiples of firstMultiple are replaced by firstWord,
 // all multiples of secondMultiple are replaced by secondWord,
 // all multiples of firstMultiple and secondMultiple are replaced by firstWordsecondWord
+// throw an error if firstMultiple or secondMultiple are equal to 0
 func (s *Service) GetFizzBuzz(ctx context.Context, req *apiV1.GetFizzBuzzRequest) (*apiV1.GetFizzBuzzResponse, error) {
 
 	if req.FirstMultiple == 0 || req.SecondMultiple == 0 {

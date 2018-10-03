@@ -8,6 +8,16 @@ option csharp_namespace = "FizzBuzz.V1";
 import "google/api/annotations.proto";
 
 service FizzBuzzService {
+
+  // GetFizzBuzz
+  // this endpoint is based on the famous FizzBuzz test
+  // if the parameters are ommited it will take default value as defined :
+  // * defaultFirstWord  = "fizz"
+  // * defaultSecondWord = "buzz"
+  // * defaultLimit = 100
+  //
+  // the default value for first_multiple & second_multiple will be 0,
+  // throwing an error as division by 0 is not well defined
   rpc GetFizzBuzz(GetFizzBuzzRequest) returns (GetFizzBuzzResponse) {
     option (google.api.http) = {
       get : "/v1/fizzbuzz"
