@@ -16,6 +16,11 @@ const (
 	defaultLimit      = 100
 )
 
+var (
+	ErrRequestNil     = errors.Errorf("error: the request is nil")
+	ErrDivisionByZero = errors.Errorf("error: division by 0 is undefined, please choose another number")
+)
+
 // Service
 // might contains a DB or whatever the service needs
 type Service struct{}
@@ -35,8 +40,12 @@ func NewFizzBuzzService() *Service {
 // throw an error if firstMultiple or secondMultiple are equal to 0
 func (s *Service) GetFizzBuzz(ctx context.Context, req *apiV1.GetFizzBuzzRequest) (*apiV1.GetFizzBuzzResponse, error) {
 
+	if req == nil {
+		return nil, ErrRequestNil
+	}
+
 	if req.FirstMultiple == 0 || req.SecondMultiple == 0 {
-		return nil, errors.Errorf("error: division by 0 is undefined, please choose another number")
+		return nil, ErrDivisionByZero
 	}
 
 	if strings.TrimSpace(req.FirstWord) == "" {
