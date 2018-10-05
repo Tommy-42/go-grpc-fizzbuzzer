@@ -126,14 +126,14 @@ func RegisterFizzBuzzServiceHandlerFromEndpoint(ctx context.Context, mux *runtim
 	defer func() {
 		if err != nil {
 			if cerr := conn.Close(); cerr != nil {
-				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 			return
 		}
 		go func() {
 			<-ctx.Done()
 			if cerr := conn.Close(); cerr != nil {
-				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 		}()
 	}()
@@ -147,8 +147,8 @@ func RegisterFizzBuzzServiceHandler(ctx context.Context, mux *runtime.ServeMux, 
 	return RegisterFizzBuzzServiceHandlerClient(ctx, mux, NewFizzBuzzServiceClient(conn))
 }
 
-// RegisterFizzBuzzServiceHandler registers the http handlers for service FizzBuzzService to "mux".
-// The handlers forward requests to the grpc endpoint over the given implementation of "FizzBuzzServiceClient".
+// RegisterFizzBuzzServiceHandlerClient registers the http handlers for service FizzBuzzService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "FizzBuzzServiceClient".
 // Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "FizzBuzzServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "FizzBuzzServiceClient" to call the correct interceptors.
