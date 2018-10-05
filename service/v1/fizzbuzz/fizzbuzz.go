@@ -62,16 +62,16 @@ func (s *Service) GetFizzBuzz(ctx context.Context, req *apiV1.GetFizzBuzzRequest
 	for i := 1; i <= int(req.Limit); i++ {
 		switch 0 {
 		case i % int(req.FirstMultiple*req.SecondMultiple):
-			fizzbuzzed = fmt.Sprintf("%s%s%s", fizzbuzzed, req.FirstWord, req.SecondWord)
+			fizzbuzzed += req.FirstWord + req.SecondWord
 		case i % int(req.FirstMultiple):
-			fizzbuzzed = fmt.Sprintf("%s%s", fizzbuzzed, req.FirstWord)
+			fizzbuzzed += req.FirstWord
 		case i % int(req.SecondMultiple):
-			fizzbuzzed = fmt.Sprintf("%s%s", fizzbuzzed, req.SecondWord)
+			fizzbuzzed += req.SecondWord
 		default:
 			fizzbuzzed = fmt.Sprintf("%s%d", fizzbuzzed, i)
 		}
 		if i < int(req.Limit) {
-			fizzbuzzed = fmt.Sprintf("%s,", fizzbuzzed)
+			fizzbuzzed += ","
 		}
 	}
 
